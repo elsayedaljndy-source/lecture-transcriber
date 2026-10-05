@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: lecture-transcriber
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: TRANSCRIBE_MODEL
+        value: gpt-4o-mini-transcribe
+      - key: SUMMARY_MODEL
+        value: gpt-4o-mini
+      - key: PRICE_PER_MIN
+        value: "0.003"
