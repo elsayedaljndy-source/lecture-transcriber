@@ -1,0 +1,6 @@
+1) Deploy the Flask backend to Render first.
+2) In GitHub: Settings > Secrets and variables > Actions > Variables > New repository variable.
+3) Name: BACKEND_URL
+4) Value: your full Render HTTPS URL.
+5) Open Actions > Build Android APK > Run workflow.
+6) Download the artifact named lecture-transcriber-apk.

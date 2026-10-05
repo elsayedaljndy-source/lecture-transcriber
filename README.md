@@ -45,3 +45,17 @@ docker run --env-file .env -p 10000:10000 lecture-transcriber
 
 ## التكلفة
 التفريغ يستخدم OpenAI API، وبالتالي تكلفة الاستخدام تعتمد على موديل التفريغ ومدة التسجيل. قيمة `PRICE_PER_MIN` مجرد تقدير لعرضه للمستخدم وليست فاتورة فعلية.
+
+## بناء APK من GitHub
+
+هذا المشروع يحتوي على إعداد Capacitor وGitHub Actions لبناء APK تلقائيًا.
+
+1. ارفع `package.json` و`capacitor.config.ts` ومجلد `.github/workflows` إلى المستودع.
+2. بعد نشر السيرفر على Render، من GitHub افتح:
+   Settings → Secrets and variables → Actions → Variables → New repository variable
+3. أنشئ متغيرًا باسم `BACKEND_URL` وضع فيه رابط Render الكامل مثل `https://your-app.onrender.com`.
+4. افتح تبويب Actions ثم `Build Android APK` ثم `Run workflow`.
+5. بعد انتهاء البناء، افتح الـworkflow وانزل إلى Artifacts وحمّل `lecture-transcriber-apk`.
+6. فك الضغط عن الـartifact وستجد `app-debug.apk`، ثم ثبّته على أندرويد.
+
+مهم: لا تضع `OPENAI_API_KEY` داخل GitHub أو داخل التطبيق. المفتاح يظل في Environment Variables على السيرفر (Render).
